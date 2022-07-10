@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-function Form() {
+function Form({formSub}) {
   const {
     register,
     handleSubmit,
@@ -9,7 +9,11 @@ function Form() {
   } = useForm();
 
   const onSubmit =(data) =>{
-    console.log(data)
+    data.id = Date.now()
+    data.fav = false 
+    formSub(data)
+  
+    reset()
 
   }
 
@@ -20,7 +24,7 @@ function Form() {
           <div>
             <h2 className="text-center">Add Contact</h2>
           </div>
-          <label for="inputEmail3" className="col-sm-2 col-form-label">
+          <label htmlfor="inputEmail3" className="col-sm-2 col-form-label">
             Name
           </label>
           <div className="col-sm-10">
@@ -35,14 +39,14 @@ function Form() {
            {errors.name && (<small className="text-danger">{errors.name.message}</small>)}
           </div>
 
-          <label for="inputEmail3" class="col-sm-2 col-form-label">
+          <label htmlfor="inputEmail3" class="col-sm-2 col-form-label">
             Email
           </label>
           <div className="col-sm-10">
             <input type="email"
               {...register("email", {
                 required: "Email is required", pattern : {
-                  value: /^([A-Za-z]|[0-9])+$ /,
+                  value: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/,
                   message: "Invalid Email address"
                 } // JS only: <p>error message</p> TS only support string
               })}
@@ -54,7 +58,7 @@ function Form() {
             {errors.email && (<small className="text-danger">{errors.email.message}</small>)}
           </div>
 
-          <label for="inputEmail3" class="col-sm-2 col-form-label">
+          <label htmlfor="inputEmail3" class="col-sm-2 col-form-label">
             Phone
           </label>
           <div className="col-sm-10">
@@ -62,7 +66,7 @@ function Form() {
               {...register("phone", {
                 required: "phone is required", pattern : {
                     value: /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
-                    message: "Invalid Phone address"
+                    message: "Invalid Phone number"
                   } 
                 })} 
               
