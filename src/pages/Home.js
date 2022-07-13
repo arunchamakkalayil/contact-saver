@@ -2,7 +2,7 @@ import Contact from "../components/Contact"
 import Form from "../components/Form"
 
 
-function Home({formSub,contacts}) {
+function Home({formSub,contacts,deleteContact}) {
   console.log(contacts)
   return (
     <div>
@@ -11,7 +11,7 @@ function Home({formSub,contacts}) {
             <Form formSub={formSub} /></div>
       <div className=" d-flex flex-wrap  justify-content-sm-around">
        {contacts.map((singleContact)=>{
-          return <div className="mt-3"> <Contact key={singleContact.id} contact={singleContact} /></div>
+          return <div className="mt-3"> <Contact key={singleContact.id} contact={singleContact} deleteContact={deleteContact} /></div>
         })}
 
 

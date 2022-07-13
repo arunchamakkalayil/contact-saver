@@ -1,19 +1,21 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
-function Contact(props) {
+
+function Contact({contact:{name,phone,email,id},deleteContact}) {
   
   return (
     <>
       <Card border="success" style={{ width: '18rem' }}>
-       <Card.Header className='bg-success' style={{color:"white"}}>{props.contact.name}</Card.Header>
+       <Card.Header className='bg-success' style={{color:"white"}}>{name}</Card.Header>
           <Card.Body>
             
             <Card.Text >
-            {props.contact.email}
+            {email}
             </Card.Text>
             <Card.Text>
-            {props.contact.phone}
+            {phone}
             </Card.Text>
+            <button type="button" onClick={()=>{deleteContact(id)}} class="btn btn-outline-success">Delete</button>
           </Card.Body>
           </Card>
      

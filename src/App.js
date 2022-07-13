@@ -16,13 +16,22 @@ function App() {
 
   }
 
+  const deleteContact =(id)=>{
+    let newContact = contacts.filter((singleContact)=>{
+      return singleContact.id !==id
+      
+    })
+    setContacts(newContact)
+
+  }
+
   return (
     <div>
       <Router>
       <Nav />
         <Routes>
         
-          <Route exact path="/" element={<Home formSub={formSub} contacts={contacts} />}></Route>
+          <Route exact path="/" element={<Home formSub={formSub} contacts={contacts} deleteContact={deleteContact} />}></Route>
           <Route path="/favourates" element={<Favourates />}></Route>
         </Routes>
       </Router>
