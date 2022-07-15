@@ -16,6 +16,12 @@ function App() {
 
   }
 
+  const favToggle = (id) =>{
+    let updateContact = contacts.map((singleContact)=>{
+      return singleContact.id === id ? {...singleContact,fav: !singleContact.fav} : singleContact
+    })
+    setContacts(updateContact)
+
   const deleteContact =(id)=>{
     let newContact = contacts.filter((singleContact)=>{
       return singleContact.id !==id
@@ -31,12 +37,13 @@ function App() {
       <Nav />
         <Routes>
         
-          <Route exact path="/" element={<Home formSub={formSub} contacts={contacts} deleteContact={deleteContact} />}></Route>
+          <Route exact path="/" element={<Home formSub={formSub} favToggle={favToggle} contacts={contacts} deleteContact={deleteContact}  />}></Route>
           <Route path="/favourates" element={<Favourates />}></Route>
         </Routes>
       </Router>
     </div>
   );
+}
 }
 
 export default App;
