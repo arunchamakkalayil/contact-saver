@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 
+
 function Form({formSub}) {
   const {
     register,
@@ -8,7 +9,7 @@ function Form({formSub}) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit =(data) =>{
+  const onSubmit = (data) =>{
     data.id = Date.now()
     data.fav = false 
     formSub(data)
@@ -20,14 +21,14 @@ function Form({formSub}) {
   return (
     <div>
       <form method="post" className="d-flex justify-content-center" noValidate onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-group shadow-lg p-4 mb-5 bg-light rounded w-30">
+        <div className="form-group  shadow-lg p-4 mb-5 bg-light rounded w-30">
           <div>
             <h2 className="text-center">Add Contact</h2>
           </div>
           <label htmlfor="inputEmail3" className="col-sm-2 col-form-label">
             Name
           </label>
-          <div className="col-sm-10">
+          <div className="col-sm-11">
             <input
               type="text"
               {...register("name", {
@@ -42,7 +43,7 @@ function Form({formSub}) {
           <label htmlfor="inputEmail3" class="col-sm-2 col-form-label">
             Email
           </label>
-          <div className="col-sm-10">
+          <div className="col-sm-11">
             <input type="email"
               {...register("email", {
                 required: "Email is required", pattern : {
@@ -61,7 +62,7 @@ function Form({formSub}) {
           <label htmlfor="inputEmail3" class="col-sm-2 col-form-label">
             Phone
           </label>
-          <div className="col-sm-10">
+          <div className="col-sm-11">
             <input
               {...register("phone", {
                 required: "phone is required", pattern : {
