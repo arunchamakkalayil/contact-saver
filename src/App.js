@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav";
 import Favourates from "./pages/Favourates";
 import Home from "./pages/Home";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs, deleteDoc,doc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
 
@@ -41,25 +41,32 @@ function App() {
     });
     
 
-    setContacts([...contacts, colRef]);
+   
   };
 
  
 
   const favToggle = (id) => {
-    let updateContact = contacts.map((singleContact) => {
-      return singleContact.id === id
-        ? { ...singleContact, fav: !singleContact.fav }
-        : singleContact;
-    });
-    setContacts(updateContact);
+  
+    const updateRef = doc(db,'contacts',id)   
+   
+  
+    updateDoc(updateRef,{fav:'true'})
+   // let updateContact = contacts.map((singleContact) => {
+    // return singleContact.id === id
+   //    ? { ...singleContact, fav: !singleContact.fav }
+   //    : singleContact;
+   //});
+   
   };
 
   const deleteContact = (id) => {
-    let newContact = contacts.filter((singleContact) => {
-      return (colRef, singleContact.id !== id);
-    });
-    setContacts(newContact);
+    //let newContact = contacts.filter((singleContact) => {
+    //  return (colRef, singleContact.id !== id);
+    //});
+    const delRef = doc(db,'contacts',id)
+    deleteDoc(delRef)
+   
   };
 
   return (
