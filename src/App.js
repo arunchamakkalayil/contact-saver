@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav";
-import Favourates from "./pages/Favourates";
-import Home from "./pages/Home";
-import { addDoc, collection, getDocs, deleteDoc,doc, updateDoc } from "firebase/firestore";
+import Saved from "./pages/Saved";
+import Add from "./pages/Add";
+import { addDoc, collection, getDocs, deleteDoc,doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
 
@@ -14,7 +14,7 @@ function App() {
   useEffect(()=>{
     getContacts();
 
-  },[])
+  },[contacts])
 
   
   const getContacts =() => {
@@ -48,10 +48,29 @@ function App() {
 
   const favToggle = (id) => {
   
-    const updateRef = doc(db,'contacts',id)   
+    const updateRef = doc(db,'contacts',id)  
+    
+     
    
-  
-    updateDoc(updateRef,{fav:'true'})
+     getDoc(updateRef).then(docSnap => {
+      
+if(docSnap.data().fav === 'false'){
+  updateDoc({fav:'true'})
+  console.log("this is true")
+
+}else{
+  updateDoc({fav:'false'})
+  console.log('this is false')
+
+}
+
+       
+      })
+    
+    
+   
+ 
+    
    // let updateContact = contacts.map((singleContact) => {
     // return singleContact.id === id
    //    ? { ...singleContact, fav: !singleContact.fav }
@@ -78,7 +97,7 @@ function App() {
             exact
             path="/"
             element={
-              <Home
+              <Add
                 formSub={formSub}
                 favToggle={favToggle}
                 contacts={contacts}
@@ -87,10 +106,10 @@ function App() {
             }
           ></Route>
           <Route
-            path="/favourates"
+            path="/saved"
             element={
-              <Favourates
-                favToggle={favToggle}
+              <Saved
+                
                 contacts={contacts}
                 deleteContact={deleteContact}
               />

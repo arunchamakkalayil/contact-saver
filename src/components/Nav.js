@@ -12,8 +12,8 @@ function Nav() {
             Contact Saver
         </Link>
         <ul className='navbar-nav mx-5'>
-            <li className='nav-item'><Link className='nav-link' to="/">Home</Link></li>
-            <li className='nav-item'><Link className='nav-link' to="/favourates">Favourates</Link></li>
+            <li className='nav-item'><Link className='nav-link' to="/">Add</Link></li>
+            <li className='nav-item'><Link className='nav-link' to="/saved">Saved</Link></li>
         </ul>
     </div>
   </nav>  

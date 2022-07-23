@@ -1,32 +1,46 @@
-import heart from '../heart.svg'
-import heartfill from '../heart-fill.svg'
 
 
-function Contact({contact,deleteContact,favToggle}) {
 
-  console.log(contact)
+function Contact({contacts,deleteContact}) {
+
+ 
   return (
     <div>
-<div className='container p-2 border  shadow-lg p-3 mb-5 bg-white rounded'>
-<div class="row p-1">
-  <div class="col-10">Name : {contact.data.name}</div>
-  
- 
-  <div onClick={()=>{favToggle(contact.id)}} class="col-2"> {contact.data.fav?<img src={heartfill}  alt="heart"></img>:<img src={heart}  alt="heart"></img>}</div>
-</div>
-<div className='p-1'>
-  <div class="col-12">Email : {contact.data.email}</div>
-  <div class="col-12">Phone : {contact.data.phone}</div><br></br>
-  <div className='row'>
- <div className='col-8'></div>
- <div className='col-4'><button type="button" onClick={()=>{deleteContact(contact.data.id)}} class="btn btn-outline-success btn-sm">Delete</button></div>
- </div>
-</div>
-</div>
 
+<div class="container"><br></br>
+    <table class="table table-bordered shadow"   width="100%" cellspacing="0">
+        <thead>
+            <tr style={{borderColor:'green'}} >
+                <th data-field="name">Name</th>
+                <th data-field="name">Email</th>
+                <th data-field="price">Phone</th>
+                <th>Delete</th>
+                
+            </tr>
+        </thead>
+     
+        <tbody>
+        {contacts.map((contact)=>{
+          return (<tr >
+            <td >{contact.data.name}</td>
+            <td>{contact.data.email}</td>
+            <td>{contact.data.phone}</td>
+            <td><button type="button" onClick={()=>{deleteContact(contact.id)}} class="btn btn-outline-success btn-sm">Delete</button></td>
+          
+        </tr>)
+
+        })}
+        <br></br>
+            
+           
+        </tbody>
+    </table>
+</div>
 
     </div>
   )
 }
 
 export default Contact
+
+//<div className='col-4'></div>
