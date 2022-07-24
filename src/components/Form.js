@@ -20,8 +20,8 @@ function Form({formSub}) {
 
   return (
     <div>
-      <form method="post" className="d-flex justify-content-center" noValidate onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-group  shadow-lg p-4 mb-5 bg-light rounded w-30">
+      <form method="post" className="d-flex justify-content-center " noValidate onSubmit={handleSubmit(onSubmit)}>
+        <div className="form-group  shadow-lg p-4   bg-light rounded w-30">
           <div>
             <h2 className="text-center">Add Contact</h2>
           </div>

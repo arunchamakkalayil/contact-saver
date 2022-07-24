@@ -8,7 +8,7 @@ function Contact({contacts,deleteContact}) {
     <div>
 
 <div class="container"><br></br>
-    <table class="table table-bordered shadow"   width="100%" cellspacing="0">
+    <table class="table table-striped shadow"   width="100%" cellspacing="0">
         <thead>
             <tr style={{borderColor:'green'}} >
                 <th data-field="name">Name</th>

@@ -5,8 +5,8 @@ function Home({ formSub, contacts}) {
   console.log(contacts);
   return (
     <div>
-      <div className="container my-4 ">
-        <div className="row justify-content-sm-center  my-2">
+      <div className="container  ">
+        <div className="row justify-content-sm-center  my-5">
           <Form formSub={formSub} />
         </div>
 
